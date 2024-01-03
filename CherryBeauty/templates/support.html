@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title%}CherryBeauty | Hỗ trợ{% endblock %}
+{% block linkcss%}
+<link rel="stylesheet" href="{% static "css/support.css" %}" type="text/css">
+<link rel="stylesheet" href="owlcarousel/owl.carousel.min.css">
+<link rel="stylesheet" href="owlcarousel/owl.theme.default.min.css">
+{% endblock %}
+
+{% block banner%}
+<div class="banner">
+    <img src="{%static "images/support/integration_3527263_1.png" %}">
+</div>
+{% endblock %}
+
+{% block main%}
+<div class='search'>
+    <input type="text" placeholder="Nhập từ khoá cần tìm kiếm">
+    <button class='button'>Tim kiem</button>
+</div>
+
+<section class='section' id="question-box">
+    <h2> CÁC CÂU HỎI THƯỜNG GẶP </h2>
+    <ul>
+        <li>
+            <a>Tôi có thể đặt thay cho gia đình và bạn bè của mình được không?</a>
+            <span>
+                &gt;
+            </span>
+        </li>
+        <li>
+            <a>Làm sao để tôi hủy đơn hàng và nhận hoàn tiền?</a>
+            <span>
+                &gt;
+            </span>
+        </li>
+        <li>
+            <a>Sau khi đặt dịch vụ mất bao lâu tôi mới nhận voucher của mình?</a>
+            <span>
+                &gt;
+            </span>
+        </li>
+        <li>
+            <a>Làm sao để liên hệ với nhà cung cấp dịch vụ mà tôi đã đặt?</a>
+            <span>
+                &gt;
+            </span>
+        </li>
+    </ul>
+</section>
+
+<section class="section" id='sec'>
+    <article>
+        <img src="{% static "images/support/notepad.png" %}">
+        <label>
+            Đặt chỗ trước
+            <span>Cách đặt, xác nhận tức thời, xem voucher</span>
+        </label>
+    </article>
+    <article>
+        <img src="{% static "images/support/credit_card_cash_withdrawal.png" %}">
+        <label>
+            Thanh toán & hóa đơn
+            <span>Cách thanh toán, truy vấn tiền tệ, bảo mật thanh toán</span>
+        </label>
+    </article>
+    <article>
+        <img src="{% static "images/support/transaction.png" %}">
+        <label>
+            Sửa đổi và hoàn tiền
+            <span>Làm sao để nhận hoàn tiền và thay đổi đơn hàng</span>
+        </label>
+    </article>
+    <article>
+        <img src="{% static "images/support/discount.png" %}">
+        <label>
+            Mã ưu đãi và Credits
+            <span>Cách sử dụng credits, mã ưu đãi, mời bạn</span>
+        </label>
+    </article>
+    <article>
+        <img src="{% static "images/support/registration.png" %}">
+        <label>
+            Cài đặt tài khoản
+            <span>Cách tạo tài khoản, mật khẩu và cập nhập thông tin</span>
+        </label>
+    </article>
+    <article>
+        <img src="{% static "images/support/subway.png" %}">
+        <label>
+            Phương tiện di chuyển
+            <span>Đặt vé máy bay, vé tàu lửa và thuê xe máy</span>
+        </label>
+    </article>
+</section>
+{% endblock %}
+
+{% block linkjs %}
+<script src="jquery.min.js"></script>
+<script src="owlcarousel/owl.carousel.min.js"></script>
+{% endblock %}

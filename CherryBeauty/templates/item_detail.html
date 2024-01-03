@@ -1,0 +1,81 @@
+{% extends 'base.html' %} {% load static %}
+ 
+{% block title%}CherryBeauty{% endblock %} 
+{% block linkcss%} 
+<link rel="stylesheet" href="{% static "css/item_detail.css" %}" type="text/css">
+{% endblock %} 
+
+{% block banner%}
+{% endblock %} 
+
+{% block main%}
+
+<div class = "container-lg">
+    <div class = "show">
+        <div class = "row">
+            <div class = "col-4">
+                <img src="{{item.product_img.url }}" class="itemimg">
+            </div>
+            <div class = "content col-8">
+              <h1 class ="articaletitle">{{item.title}}</h1> 
+
+                <div class ="price">
+                    <b> {{item.price}} </b> <i class="fa-solid fa-dong-sign"></i>
+                </div>
+                <div class = "row">
+                    <div class="number-input">
+                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"> - </button>
+                        <input class="quantity" min="0" name="quantity" value="1" type="number" id ="productQty">
+                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"> + </button>
+                    </div>
+
+                    <div class="addcartdiv">
+                        <input type="hidden" class="product-id" value="{{item.id}}"/>
+                        <input type="hidden" class="product-title" value="{{item.title}}"/>
+                        <button class="addcart" id ="addToCartBtn">Thêm vào giỏ hàng</button>
+                    </div>
+
+                    <div class="buydiv">
+                        <button class="buy">Mua ngay</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class = "row">
+        <div class = "col-12">
+            <p class = "infotitle"> Giới thiệu </p>
+        </div>
+    </div>
+    <div class = "row">
+        <div class = "col-1"></div>
+        <div class = "col-10">
+            <p> {{item.info | safe}} </p>
+            <p> {{item.body | safe}} </p>
+            <table>
+                <tr>
+                  <th>Sản phẩm: </th>
+                  <td>{{item.title}}</td>
+                </tr>
+                <tr>
+                  <th>Phân loại: </th>
+                  <td>{{item.collection}}</td>
+                </tr>
+                <tr>
+                  <th>Thương hiệu: </th>
+                  <td>{{item.brand}}</td>
+                </tr>
+                <tr>
+                  <th>Xuất xứ: </th>
+                  <td>{{item.nation}}</td>
+                </tr>
+            </table>
+        </div>
+        <div class = "col-1"></div>
+    </div>
+</div>
+{% endblock %} 
+
+{% block linkjs %}
+<script src="{%static "js/cart.js" %}"></script>
+{% endblock %}

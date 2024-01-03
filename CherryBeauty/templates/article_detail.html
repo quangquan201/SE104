@@ -1,0 +1,79 @@
+{% extends 'base.html' %} 
+
+{% load static %} 
+
+{% block title%}CherryBeauty{%endblock %} 
+
+{% block linkcss%} 
+<link rel="stylesheet" href="{% static "css/article_detail.css" %}" type="text/css"> 
+{% endblock %} 
+
+{% block banner%}
+{% endblock %} 
+
+{% block main%}
+
+<div class="container-lg">
+    <div class="content">
+        <div class="row">
+        {% if post%}
+            <h1 class="articaletitle">{{post.title}}</h1>
+        </div>
+        <hr class="new1">
+        <div class="row">
+            <small class="articaledatepost"><i>{{post.date_added}}</i></small>
+        </div>
+        <div class="row">{{post.intro}}</div>
+        <div class="row justify-center">
+            <img src="{{ post.header_image.url }}" width="auto" height="700px" />
+        </div>
+        <div class="row">{{post.body|safe}}</div>
+    </div>
+    <hr>
+    <div class = "likeunlike">
+    {% if user %}
+    <form action="{% url 'like_post' post.slug%}" method = "POST">
+        {% csrf_token %}
+        {% if user not in post.likes.all %}
+        <button type ="submit" name="post_id" value ="{{post.id}}" class="like"> <i class="fa-regular fa-thumbs-up"></i> Like </button>
+        {% else %}
+        <button type ="submit" name="post_id" value ="{{post.id}}" class="unlike"> <i class="fa-regular fa-thumbs-up"></i> Unlike </button>
+        {% endif %}
+        - {{post.total_likes}} likes 
+    </form>
+    {% endif %}
+    {% endif %}
+    </div>
+    
+    <hr class="new2">
+<div class="container">
+    <div class = "comment">
+        <h2> Bình luận </h2>
+        <hr>
+        <a href = "{% url 'add_comment' post.slug %}"> Thêm bình luận </a>
+        <div>
+        {% if not post.comments.all%}
+            <p style="text-align:center; margin-top:5px">Hiện bài viết chưa có bình luận nào </p>
+        {% else %}
+            {% for comment in post.comments.all%}
+                <strong> {{comment.name}} </strong>
+                <small> {{comment.date_added}}</small>
+                <br/>
+                {{comment.body}}
+                <br/>
+                <hr class="new3">
+            {% endfor %}
+        {% endif %}
+        </div>
+    </div>
+</div>
+
+</div>
+
+
+{% endblock %} 
+  
+  
+{% block linkjs %} 
+{% endblock %}
+

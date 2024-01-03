@@ -1,0 +1,62 @@
+.blog{
+    color: #9A1B65;
+    font-family: quicksan-bold;  
+}
+h1{
+    color: #0E5776;
+    font-size: 30px;
+    font-family: quicksan-bold;
+    text-align: center;
+    margin-top: 10px;
+    width: max-content;
+}
+main{
+    margin-top: 150px;
+    margin-bottom: 100px;
+}
+
+.articaledatepost{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+hr.new1 {
+    border-top: 1px solid #137ACA;
+    margin: 5px;
+  }
+hr.new2 {
+    border-top: 2px solid #000;
+    margin: 10px;
+  }
+hr.new3{
+    border-top: 1px solid #000;
+}
+.likeunlike{
+    margin-top: 10px;
+}
+
+.like,.unlike{
+    width: 70px;
+    height: 30px;
+    cursor: pointer;
+    color: white;
+    
+}
+.like{
+    background-color: #3DBF61;
+    border: 1px solid #3DBF61;
+    border-radius: 10px;
+
+}
+
+.unlike{
+    background-color: red;
+    border: 1px solid red;
+    border-radius: 10px;
+    margin-bottom: 10px;
+
+}
+
+.comment h2{
+    font-size: 25px;
+    font-family: quicksan-bold;
+}

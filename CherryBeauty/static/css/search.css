@@ -1,0 +1,250 @@
+.product{
+    color: #9A1B65;
+    font-family: quicksan-bold; 
+}
+main{
+    margin-top: 150px;
+    margin-bottom: 100px;
+    
+}
+h1{
+    color: #0E5776;
+    font-size: 25px;
+    font-family: quicksan-bold;
+    text-align:start;
+    margin-bottom: 20px; 
+    margin-top: 20px;
+}
+.list{
+    width: 1000px;
+    right: 10px;
+}
+.item-list{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 50px;
+    height: max-content;
+}
+.sanpham{
+    border-radius: 10px;
+    display: grid;
+    grid-template-rows: 60% 15% 5% 10% 10%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    justify-items: center;
+    gap:5px;
+    height:max-content;
+}
+.item{
+    width: 280px;
+    height: 430px;
+    border: 0.5px solid #0E5776;
+    border-radius: 10px;
+}
+.more{
+    font-family: quicksan;
+    text-decoration: none;
+    border: 1px solid #F0962D;
+	border-radius: 15px;
+	width: 114px;
+	height: 30px;
+	background-color: white;
+    color: #F0962D;
+    font-size: 15px;
+    cursor: pointer;
+}
+.more:hover,.more:active{
+    color: black;
+    border: 1px solid #F8B260;
+    background-color:#F8B260; 
+}
+.pricediv{
+    height: 25px;
+}
+.price{
+    font-weight:bolder;
+    color: #0E6B93;
+    height: 95%;
+    align-content: center;
+}
+.divtitle{
+    height: 50px;
+    display:flex;
+    align-items: center;
+}
+.title{
+    font-family: quicksan-bold;
+    height: 90%;
+    align-items: center;
+}
+.sp_img{
+    width: 90%;
+    max-height: 95%;
+
+}
+.sp_img img{
+    max-height: 220px;
+    width: auto;
+    justify-content: flex-end;
+}
+
+.addcartdiv,.morediv{
+    height: 40px;
+}
+.addcart{
+    font-family: quicksan;
+    text-decoration: none;
+    border: 1px solid #D84A8C;
+	border-radius: 10px;
+	width: max-content;
+	height: 90%;
+	color: #D84A8C;
+    background-color: white;
+    font-size: 15px;
+    cursor: pointer;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.addcart:hover, .addcart:active{
+    color: white;
+    background-color: #D84A8C;
+}
+
+.content{
+    display: grid;
+    grid-template-rows: 1fr 1fr 2fr 1fr;
+    height: 250px;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.line{
+    border-bottom: 0.5px solid #9B9A9A;
+}
+/*.content button{
+  background-color: white ;
+  border: 1px solid #15507C ;
+  color: #15507C;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  width: 120px;
+  height: 40px;
+  border-radius: 5px;
+  cursor:pointer;
+  margin: 0 auto;
+}
+.content button:active {
+    background-color: #15507C;
+    color: white;
+    box-shadow: 0 3px #666;
+    transform: translateY(2px);
+  }*/
+.contenttitle{
+    color: #145B90 ;
+    font-family: quicksan-medium;
+    font-size: 20px;
+    border-bottom: 1px solid #137ACA;
+    padding-bottom: 5px;
+    width: fit-content;
+}
+.contenttitle a{
+    text-decoration: none;
+    color: #145B90 ; 
+}
+.contenttitle a:active{
+    color: purple ; 
+}
+.contentdateup{
+    color: #787878;
+}
+
+.headerimg{
+    width: 100%;
+    height: 290px;
+}
+
+.pagenum{
+    margin-top: 20px;
+    font-family: quicksan-medium;
+}
+.pre_button,.next_button{
+  background: #266DB6;
+  border-radius: 999px;
+  box-shadow: #266DB6 0 10px 20px -10px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-family: quicksan;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  opacity: 1;
+  outline: 0 solid transparent;
+  padding: 8px 18px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: min-content;
+  word-break: break-word;
+  border: 0;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+
+/* CSS */
+.content button {
+  background-color: transparent;
+  border: 1px solid #266DB6;
+  box-sizing: border-box;
+  color: #00132C;
+  font-family: "Avenir Next LT W01 Bold",sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  padding: 10px 17px;
+  position: relative;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.content button:hover,
+.content button:active {
+  outline: 0;
+}
+
+.content button:hover {
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.content button:before {
+  background-color: #D5EDF6;
+  content: "";
+  height: calc(100% + 3px);
+  position: absolute;
+  right: -7px;
+  top: -9px;
+  transition: background-color 300ms ease-in;
+  width: 100%;
+  z-index: -1;
+}
+
+.content button:hover:before {
+  background-color: #6DCFF6;
+}
+
+@media (min-width: 768px) {
+  .content button {
+    padding: 10px 17px;
+  }
+}

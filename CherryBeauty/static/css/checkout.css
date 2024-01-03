@@ -1,0 +1,193 @@
+body
+{
+	font-family: quicksan-medium;
+}
+.font_f
+{
+	font-family: quicksan-medium;
+}
+main{
+    margin-top: 150px;
+}
+h3{
+    color: #0E5776;
+    margin-bottom: 5px;
+}
+h2{
+    font-size: 18px;
+}
+.location{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    margin-left: 20px;
+}
+
+.location a{
+    text-decoration: none;
+    color: #000;
+    font-family: quicksan-medium;
+}
+.location a:hover{
+    color: #0E6B93;
+}
+.col-1 a:hover
+{
+    color: #56BDD8;
+    cursor: pointer;
+}
+hr
+{
+    margin: 10px;
+}
+.productlist{
+    width: 98%;
+}
+.productimg
+{
+    height: 100px;
+    width: 100px;
+}
+
+.row
+{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.f_button input
+{
+    height: 50px;
+    width: 50px;
+    margin: 0px;
+}
+.f_button button
+{
+    background-color: #3CACCF;
+    cursor: pointer;
+}
+.f_button button:hover
+{
+    background-color: #94DCF2;
+}
+
+.bleft
+{
+    height: 50px;
+    width: 30px;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    border: 0px;
+}
+
+.bright
+{
+    height: 50px;
+    width: 30px;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    border: 0px;
+}
+
+.thongtin
+{
+    width: 95%;
+    padding: 1rem; 
+    background-color: #EFFCFB;
+    color:  black;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.thongtin input
+{
+    background-color: #EFFCFB;
+    border-right: 0px;
+    border-left: 0px;
+    border-top: 0px;
+    border-bottom: solid 1px #959595;
+    width: 300px;
+    height: 30px;
+}
+.thongtin .label{
+    margin-top: 5px;
+    font-style: italic;
+}
+.gui
+{
+    background-color: #1D60D3;
+    padding: 10px;
+    border-radius: 10px;
+    border: 0px;
+}
+.gui:hover
+{
+    cursor: pointer;
+    background-color: #317DFE;
+}
+
+.payment, .confirm{
+    padding: 1rem;
+    background-color: white;
+    border-radius: 10px;
+    width: 95%;
+    
+    background-color: #EFFCFB;
+}
+.method {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 5rem 0 2rem;
+    border-bottom: 1.5px solid lightgray;
+}
+.method i{
+    margin-right: 5px;
+    color: #963361;
+}
+
+
+input[type=radio] {
+    border: 0px;
+    width: 4rem;
+    height: 1.2rem;
+}
+
+.confirm {
+    position: relative;
+}
+
+.thanhtoan {
+    padding: 1rem;
+    border-radius: 20px;
+    background-color: #2DA6D9;
+    color: white;
+    border: 0;
+    font-size: 1.3rem;
+    position: relative;
+    left: 75%;
+    cursor: pointer;
+    width: 150px;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+td{
+    text-align: center;
+}
+table, td{
+    border: 0.5px solid;
+}
+.listtitle{
+    background-color: #0E5776;
+    color: #fff;
+    padding: 5px;
+}
+.number-input{
+    width: 40px;
+}
+.itemprice,.sumprice{
+    width: 100px;
+}

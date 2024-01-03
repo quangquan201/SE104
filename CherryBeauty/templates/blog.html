@@ -1,0 +1,71 @@
+{% extends 'base.html' %} 
+
+{% load static %} 
+{% block title%}CherryBeauty | Blog{%endblock %} 
+
+{% block linkcss%} 
+<link rel="stylesheet" href="{% static "css/blog.css" %}" type="text/css">
+{% endblock %} 
+
+{% block banner%}
+<div class="section-1">
+  <div class="container-fluid">
+    <img src="{% static "img/img_banner/banner_blog.jpg" %}" width="100%"
+    height="100%">
+  </div>
+</div>
+{% endblock %} 
+
+{% block main%}
+
+<div class="row">
+  <div class="container-lg">
+    <h1>Review Mỹ Phẩm</h1>
+  </div>
+</div>
+
+<div class="container">
+{% for post in posts %}
+  <div class="row line">
+    <div class="col-4">
+      <div class="headerimg">
+        {% if post.header_image %}
+          <img src="{{ post.header_image.url }}" width="100%" height="100%" />
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="col-8">
+      <div class = "content">
+      
+        <p class="contenttitle"> <a href ="{% url 'article_detail' post.slug %}">{{post.title}}</a></p>
+        <small class = "contentdateup">{{post.date_added}} </small>
+        <p class="contentintro"> {{post.intro}}.... </p>
+
+        <button class="more" onclick="window.location='{% url 'article_detail' post.slug %}'"> Xem thêm </button>
+    </div>
+    </div>
+  </div>
+{% endfor %} 
+
+  <div class = "row justify-center">
+    <div class = "pagenum">
+        {% if posts.has_previous %}
+      <!--<a href = "?page=1"> &laquo First</a>-->
+          <button class = "pre_button" onclick="window.location='?page={{posts.previous_page_number}}'"><i class="fa-solid fa-angles-left"></i></button>
+        {% endif %}
+ 
+      Page <strong style="color: #266DB6"> {{posts.number}} </strong> of <strong style="color: #266DB6"> {{posts.paginator.num_pages}} </strong>
+    
+      {% if posts.has_next %}
+        <button class = "next_button" onclick="window.location='?page={{posts.next_page_number}}'"><i class="fa-solid fa-angles-right"></i></button>
+      <!--<a href = "?page={{posts.paginator.num_pages}}"> &laquo last</a>-->
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %} 
+
+{% block linkjs %}
+{% endblock %}
+

@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title%}CherryBeauty | Sản phẩm{% endblock %}
+{% block linkcss%}
+<link rel="stylesheet" href="{% static "css/product.css" %}" type="text/css">
+<link rel="stylesheet" href="{% static "css/owl.carousel.min.css"%}">
+<link rel="stylesheet" href="{% static "css/owl.theme.default.min.css"%}">
+{% endblock %}
+
+{% block banner%}
+{% endblock %}
+
+{% block main%}
+<div class="location">
+    <a href="/"><i class="fa-solid fa-house"></i> Trang chủ</a>
+    <i class="fa-solid fa-angle-right"></i>
+    <p style="color:#9A1B65; font-family: quicksan-bold">Sản phẩm</p>
+</div>
+<div class="list container-lg">
+<h1>Mỹ Phẩm</h1>
+<div class ="container-list">
+    <div class = "makeuplist">
+        <div class="owl-carousel">
+           {% for item in makeup_list %}
+           <div class ="sanpham">
+                    <div class="sp_img">
+                        {% if item.product_img %}
+                          <img src="{{ item.product_img.url }}"/>
+                        {% endif %}
+                    </div>
+                    <div class="divtitle">
+                    <p class="title">{{item.title}}</p>
+                    </div>
+                    <div class="pricediv">
+                    <p class="price"><em>{{item.price}} VNĐ</em></p>
+                    </div>
+                    <div class="addcartdiv">
+                    <button data-product="{{item.id}}" data-action="add" class="addcart update-cart"><i class="fa-solid fa-basket-shopping fa-lg"></i>Thêm vào giỏ hàng</button>
+                    </div>
+                    <div class="morediv">
+                    <button class="more" onclick="window.location='{% url 'item_detail' item.slug %}'"> Xem thêm </button>
+                    </div>
+            </div>
+            {% endfor %}        
+        </div>
+        <button class = "showall" onclick="makeupshow()">Xem tất cả  <i class="fa-solid fa-angle-right"></i> </button>
+    </div>
+</div>
+</div>
+<div class="list container-lg">
+    <h1>Chăm sóc da</h1>
+    <div class ="container-list">
+        <div class = "skincarelist">
+            <div class="owl-carousel">
+               {% for item in skincare_list %}
+               <div class ="sanpham">
+                        <div class="sp_img">
+                            {% if item.product_img %}
+                              <img src="{{ item.product_img.url }}"/>
+                            {% endif %}
+                        </div>
+                        <div class="divtitle">
+                        <p class="title">{{item.title}}</p>
+                        </div>
+                        <div class="pricediv">
+                        <p class="price"><em>{{item.price}} VNĐ</em></p>
+                        </div>
+                        <div class="addcartdiv">
+                        <button data-product="{{item.id}}" data-action="add" class="addcart update-cart"><i class="fa-solid fa-basket-shopping fa-lg"></i>Thêm vào giỏ hàng</button>
+                        </div>
+                        <div class="morediv">
+                        <button class="more" onclick="window.location='{% url 'item_detail' item.slug %}'"> Xem thêm </button>
+                        </div>
+                </div>
+                {% endfor %}        
+            </div>
+            <button class = "showall" onclick="skincareshow()">Xem tất cả <i class="fa-solid fa-angle-right"></i></button>
+        </div>
+    </div>
+    </div>
+{% endblock %}
+
+{% block linkjs %}
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script src="{%static "js/owl.carousel.min.js" %}"></script>
+<script src="{%static "js/product.js" %}"></script>
+<script src="{%static "js/cart.js" %}"></script>
+<script type="text/javascript">
+    var user = '{{request.user}}'
+    
+    function getToken(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    const csrftoken = getToken('csrftoken');
+    
+</script>
+<script >
+	$('.owl-carousel').owlCarousel({
+    loop:true,
+    margin:10,
+    nav:true,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:3
+        },
+        1000:{
+            items:4
+        }
+    }
+})
+</script>
+{% endblock %}

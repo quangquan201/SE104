@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title%}CherryBeauty{% endblock %}
+{% block linkcss%}
+<link rel="stylesheet" href="{% static "css/cart.css" %}" type="text/css">
+{% endblock %}
+
+{% block banner%}
+{% endblock %}
+
+{% block main%}
+<div class="container-lg">
+    <div class="row">
+        <div class="location">
+            <a href="/product"><i class="fa-solid fa-angle-left"></i> Tiếp tục mua sắm</a>
+        </div>
+    </div>
+    {% if items%}
+    <div class="row">
+        <table>
+            <tr>
+              <th id=""></th>
+              <th id="productimg">Hình ảnh</th>
+              <th id="productitle">Sản phẩm</th>
+              <th id="itemprice">Đơn giá(VNĐ)</th>
+              <th id="count">Số lượng</th>
+              <th id="sumprice">Thành tiền</th>
+            </tr>
+            {% for item in items%}
+            <tr>
+              <td>
+                <form>
+                    <input id="checkbox" type="checkbox" name="1">
+                </form>
+              </td>
+              <td headers="producimg">
+                {% if item.product.product_img %}
+                    <img src="{{item.product.product_img.url }}" class="productimg">
+                {% endif %}
+              </td>
+              <td headers="productitle">{{item.product.title }}</td>
+              <td headers="itemprice" id='1'>{{item.product.price }}</td>
+              <td headers="count">
+                <div class="quantilydiv">
+                    <button class ="minus update-cart" data-product="{{item.product.id}}" data-action="remove"> - </button>
+                    
+                    <b class="quantily"> {{item.quantily}} </b>
+
+                    <button class ="plus update-cart" data-product="{{item.product.id}}" data-action="add"> + </button>
+                </div>
+              </td>
+              <td headers="sumprice" id="num-price">{{item.get_total}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <hr>
+    <!--<div class="row">
+        <div class="col-6"></div>
+        <div class="col-5">
+            <h3>Mã giảm giá:</h3>
+        </div>
+        <div class="col-1">
+            <button class="magg">+</button>
+        </div>
+    </div>
+    <hr>-->
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-1">
+            <button class="selectall" value="select" onClick="toggle()">Chọn tất cả</button>
+        </div>
+        <div class="col-3">
+            <button class="delete"><strong>Xóa</strong></button>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-3">
+            <h3>Tổng thanh toán ({{order.get_cart_items}} sản phẩm) :</h3>
+        </div>
+        <div class="col-2">
+            <h3 style="color:#0E6B93">{{order.get_cart_total}} VNĐ</h3>
+        </div>
+    </div>
+    <div class = "row">
+        <div class = "col-10"></div>
+        <div class="col-2">
+            <a href= "{% url 'checkout' %}"><button class="mua"><strong>Mua hàng</strong></button></a>
+        </div>
+    </div>
+    <script>
+
+        function toggle()
+        {
+            var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            var btn = document.querySelectorAll('selectall');
+            /*if(btn.value == "select")*/
+            {
+                for (var i = 0; i < checkboxes.length; i++)
+                    {checkbox.checked = true;}
+                /*btn.value = 'deselect';*/
+            }
+            /*else
+            {
+                for (var i = 0; i < checkboxes.length; i++)
+                    {checkbox.checked = false;}
+                button.value = 'select' 
+            }*/
+        }
+    </script>
+    <script>
+        function order(){
+            window.location.href = '/order/{{product.slug}}';
+        }
+    </script>
+    {% else %}
+            <div class="row">
+                <p class="Blank"><i>Không có sản phẩm nào trong giỏ hàng</i></p>
+            </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block linkjs %}
+<script src="{%static "js/cart.js" %}"></script>
+<script type="text/javascript">
+    var user = '{{request.user}}'
+    
+    function getToken(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    const csrftoken = getToken('csrftoken');
+    
+</script>
+{% endblock %}

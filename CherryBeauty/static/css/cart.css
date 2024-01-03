@@ -1,0 +1,150 @@
+body
+{
+	font-family: quicksan-medium;
+}
+.font_f
+{
+	font-family: quicksan-medium;
+}
+main{
+    margin-top: 150px;
+}
+footer{
+    margin-top: 50px;
+}
+.location{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    margin-left: 20px;
+}
+
+.location a{
+    text-decoration: none;
+    color: #000;
+    font-family: quicksan-medium;
+}
+.location a:hover{
+    color: #0E6B93;
+}
+hr
+{
+    margin: 10px;
+}
+.productimg
+{
+    height: 150px;
+    width: 150px;
+}
+.row
+{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.chon
+{
+    transform: scale(0.4)
+}
+
+.selectall
+{
+    border: solid 1px;
+    padding: 5px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+.delete
+{
+    border: solid 1px #949494;
+    padding: 5px;
+    border-radius: 15px;
+    color: #949494;
+}
+
+.mua
+{
+    background-color: #0E6B93;
+    padding: 10px;
+    border-radius: 10px;
+    border: 0px;
+    color: white;
+    font-size: 18px;
+}
+.mua:hover
+{
+    cursor: pointer;
+    background-color: #2b8cb6;
+}
+
+
+/*====table=======*/
+
+table{
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+table, td, th {
+    border: 0.5px solid;
+}
+th {
+    height: 50px;
+    background-color: #0E6B93;
+    color: white;
+  }
+
+.magg
+{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: #1D60D3;
+    border: 0px;
+    color: white;
+    font-size: 20px;
+}
+.magg:hover
+{
+    cursor: pointer;
+    background-color: #317DFE;
+}
+.Blank{
+    height: 100px;
+    text-align: center;
+    width: 100%;
+    margin-top: 100px;
+    font-size: 18px;
+}
+
+#num{
+    width: 50px;
+    height: 20px;
+    text-align: center;
+    
+}
+#num::-webkit-outer-spin-button,#num::-webkit-inner-spin-button {
+    -webkit-appearance:none;
+    margin:0;
+}
+.minus,.plus{
+    width: 20px;
+    font-size: 15px;
+    height: 20px;
+    cursor: pointer;
+}
+.quantilydiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+}
+
+.quantily{
+    margin-left: 5px;
+    margin-right: 5px;
+}

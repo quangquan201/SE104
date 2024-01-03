@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title%}CherryBeauty{% endblock %}
+{% block linkcss%}
+<link rel="stylesheet" href="{% static "css/search.css" %}" type="text/css">
+{% endblock %}
+
+{% block banner%}
+{% endblock %}
+
+{% block main%}
+<div class="list container-lg">
+    <h1>Kết quả tìm kiếm " {{request.GET.q}} "</h1>
+    {% if productdata%}
+    <div class ="container-list">
+
+        <div class = "makeuplist">
+            <div class="owl-carousel">
+               {% for item in productdata %}
+               <div class = "item">
+               <div class ="sanpham">
+                        <div class="sp_img">
+                            {% if item.product_img %}
+                              <img src="{{ item.product_img.url }}"/>
+                            {% endif %}
+                        </div>
+                        <div class="divtitle">
+                        <p class="title">{{item.title}}</p>
+                        </div>
+                        <div class="pricediv">
+                        <p class="price"><em>{{item.price}} VNĐ</em></p>
+                        </div>
+                        <div class="addcartdiv">
+                          <button data-product="{{item.id}}" data-action="add" class="addcart update-cart"><i class="fa-solid fa-basket-shopping fa-lg"></i>Thêm vào giỏ hàng</button>
+                        </div>
+                        <div class="morediv">
+                        <button class="more" onclick="window.location='{% url 'item_detail' item.slug %}'"> Xem thêm </button>
+                        </div>
+                </div>
+                </div>
+                {% endfor %}        
+            </div>
+        </div>
+    {% else %}
+        <p style="margin-top:50px;margin-left:50px;"> Không tìm thấy bất kì sản phẩm nào phù hợp</p>
+    {% endif %}
+
+    <h1>Một số bài viết liên quan " {{request.GET.q}} "</h1>
+    {% if blogdata%}
+    <div class ="container-list">
+        <div class = "bloglist">
+            <div class="container">
+                {% for post in blogdata %}
+                <div class="row line">
+                  <div class="col-4">
+                    <div class="headerimg">
+                      {% if post.header_image %}
+                        <img src="{{ post.header_image.url }}" width="100%" height="100%" />
+                      {% endif %}
+                    </div>
+                  </div>
+              
+                  <div class="col-8">
+                    <div class = "content">
+                    
+                      <p class="contenttitle"> <a href ="{% url 'article_detail' post.slug %}">{{post.title}}</a></p>
+                      <small class = "contentdateup">{{post.date_added}} </small>
+                      <p class="contentintro"> {{post.intro}}.... </p>
+              
+                      <button class="" onclick="window.location='{% url 'article_detail' post.slug %}'"> Xem thêm </button>
+                  </div>
+                  </div>
+                </div>
+              {% endfor %}         
+            </div>
+        </div>
+    {% else %}
+        <p style="margin-top:50px;margin-left:50px;"> Không tìm thấy bất kì bài viết nào phù hợp</p>
+    {% endif %}
+
+    </div>
+{% endblock %}
+
+{% block linkjs %}
+<script src="{%static "js/cart.js" %}"></script>
+<script type="text/javascript">
+  var user = '{{request.user}}'
+  
+  function getToken(name) {
+      let cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+          const cookies = document.cookie.split(';');
+          for (let i = 0; i < cookies.length; i++) {
+              const cookie = cookies[i].trim();
+              // Does this cookie string begin with the name we want?
+              if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                  cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                  break;
+              }
+          }
+      }
+      return cookieValue;
+  }
+  const csrftoken = getToken('csrftoken');
+</script>
+{% endblock %}

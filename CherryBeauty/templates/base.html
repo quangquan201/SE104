@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static "img/img_header/logo_icon.png" %}" type="image/x-icon">
+    <title>{% block title%}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static "css/base.css" %}" type="text/css">
+    <link rel="stylesheet" href="{% static "css/grid.css" %}">
+    <script src="https://kit.fontawesome.com/db87ccc971.js" crossorigin="anonymous"></script>
+    {% block linkcss%}{% endblock %}
+</head>
+
+<body>
+    <header>
+        <div id="wrapper">
+            <div class="header">
+                <div class="container-lg">
+                    <div class="row">
+                        <div class="col-2 ">
+                            <div class="box1">
+                                <img src="{% static "img/img_header/address_icon.png" %}" width="auto" height="90%" margin="0 auto">
+                                <p style="font-size: small;">Khu phố 6, Linh Trung, Thủ Đức, Hồ Chí Minh</p>
+                            </div>
+                        </div>
+
+                        <div class="col-2">
+                            <div class="box1">
+                                <img src="{% static "img/img_header/mail_icon.png" %}"  width="auto" height="90%" margin="0 auto">
+                                <p style="font-size: small;">070.8349.971
+                                    cherrybeauty@gmail.com</p>
+                            </div>
+                        </div>
+
+                        <div class="col-3">
+                            <div class="logo">
+                                <img src="{% static "img/img_header/logo.png" %}" width="auto" height="100%" margin="0 auto">
+                            </div>
+                        </div>
+
+                        <div class="col-3">
+                            <div class="box justify-around">
+                                {% if user.is_authenticated %}
+
+                                <div class ="username">
+                                    {% if user.customer.profile_pic %}
+                                    <img class ="profileimg" src ="{{user.customer.profile_pic.url}}">
+                                    {% else %}
+                                    <button class ="profile"><i class="fa-solid fa-circle-user"></i></button>
+                                    {% endif %}
+                                <a href = "#"> {{user.get_username}}</a>
+                                </div>
+                                <a href= "{% url 'cart' %}"><button class ="cart" > 
+                                    <i class="fa-solid fa-basket-shopping fa-lg"></i>({{cartItems}})
+                                </button></a>
+                                <div class = "signout">
+                                    <a href= "{% url 'logout' %}"><button class="header__DX" >Đăng xuất <i class="fa-solid fa-arrow-right-from-bracket"></i></button></a>
+                                </div>
+
+
+                                {% else %}
+
+                                <button class="header__DK" onclick="register()">Đăng ký</button>
+                                <button class="header__DN" onclick="signin()">Đăng nhập</button>
+                                {% if cartItems %}
+                                <a href= "{% url 'cart' %}"><button class ="cart" > 
+                                    <i class="fa-solid fa-basket-shopping fa-lg"></i>({{cartItems}})
+                                </button></a>
+                                {% endif %}
+                                {% endif %}
+
+                            </div>
+                        </div>
+
+                        <div class="col-1">
+                            <div class="box1">
+                                <i class="fa-brands fa-facebook fa-2x"
+                                    style="cursor: pointer; padding-right: 15px;color:#0E5776"></i>
+                                <i class="fa-brands fa-instagram fa-2x" style="cursor: pointer; color:#B21B61"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="navigation">
+                    <div class="container-lg">
+                        <div class="row">
+                            <div class="col-1">
+
+                            </div>
+                            <div class="col-9 ">
+                                <nav class="menu">
+                                    <ul class="prime row">
+                                        <li><a class="home" href="/">TRANG CHỦ</a></li>
+                                        <li><a class="intro" href="/aboutus">GIỚI THIỆU</a></li>
+                                        <li><a class="product" href="/product">SẢN PHẨM</a>
+                                            <div class = 'dropmenuproduct'>
+                                                <ul>
+                                                    <li><a href="/makeup">Makeup</a></li>
+                                                    <li><a href="/skincare">Chăm sóc da</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li><a class="blog" href="/blog">BLOG</a></li>
+                                        <li><a class="brand" href="/brand">THƯƠNG HIỆU</a></li>
+                                        <li><a class="support" href="/support">HỖ TRỢ</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="col-2">
+                                <div class="search-container">
+                                    <form action="/search">
+                                      <input name="q" type="text" placeholder="Tìm kiếm.." name="search">
+                                      <button type="submit"><i class="fa-solid fa-magnifying-glass fa-lg"
+                                        style="cursor: pointer; color: black;"></i></button>
+                                    </form>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+    </header>
+    <main>
+        {% block banner%}{% endblock %}
+        {% block main%}{% endblock %}
+
+        <button class="nut-mo-chatbox" onclick="moForm()"><b>Tư vấn với CherryBeauty</b> <i
+                    class="far fa-horizontal-rule"></i> </button>
+            <div class="Chatbox" id="myForm">
+                <button class="nut-dong-chatbox" onclick="dongForm()"><b>Tư vấn với CherryBeauty</b> <i class="fa-solid fa-xmark "></i> </button>
+                <form action="" class="form-container">
+                    <div class="chuyenvien">
+                        <div><i class="fas fa-headset fa-2x"></i></div>
+                        <div><p id="tuvanvien"></p>
+                            <small>Chuyên viên tư vấn CSKH</small>
+                        </div>
+                    </div>
+                    <label for="msg"><b>Lời Nhắn</b></label>
+                    <textarea placeholder="Bạn hãy nhập lời nhắn.." name="msg" required></textarea>
+                    <button type="submit" class="btn">Bắt đầu chat</button>
+                </form>
+            </div>
+    </main>
+
+    <footer>
+        <div class="rate">
+            <div class="box_1">
+                <img src="{% static 'img/img_footer/sp_chinh_hang.png' %}" alt="san pham chinh hang" />
+                <br><svg width="70" height="2">
+                    <line x1="0" y1="2" x2="70" y2="2"
+                        style="stroke: rgb(150, 150, 150); stroke-linecap:round; stroke-width:0.5;" />
+                </svg></br>
+                <p class="title">Mỹ phẩm chính hãng</p>
+                <p>Cam kết mỹ phẩm chính hãng. Có mã xác minh và xác nhận sản phẩm</p>
+            </div>
+            <div class="box_2">
+                <img src="{% static 'img/img_footer/da_dang_sp.png' %}" alt="da dang san pham" />
+                <br><svg width="70" height="2">
+                    <line x1="0" y1="2" x2="70" y2="2"
+                        style="stroke: rgb(150, 150, 150); stroke-linecap:round; stroke-width:0.5;" />
+                </svg></br>
+                <p class="title">Đa dạng sản phẩm cũng như thương hiệu</p>
+                <p>Hàng nghìn thương hiệu cho phép bạn thoải mái lựa chọn</p>
+            </div>
+
+            <div class="box_3">
+                <img src="{% static 'img/img_footer/khach_hang_tin_nhiem.png' %}" alt="khach hang tin nhiem" />
+                <br><svg width="70" height="2">
+                    <line x1="0" y1="2" x2="70" y2="2"
+                        style="stroke: rgb(150, 150, 150); stroke-linecap:round; stroke-width:0.5;" />
+                </svg></br>
+                <p class="title">Được vô số khách hàng tin dùng</p>
+                <p>Nhiều khách hàng quen đã tin tưởng và lựa chọn CherryBeauty</p>
+            </div>
+
+            <div class="box_4">
+                <img src="{% static 'img/img_footer/thanh_toan_tien_loi.png' %}" alt="thanh toan tien loi" />
+                <br><svg width="70" height="2">
+                    <line x1="0" y1="2" x2="70" y2="2"
+                        style="stroke: rgb(150, 150, 150); stroke-linecap:round; stroke-width:0.5;" />
+                </svg></br>
+                <p class="title">Thanh toán tiện lợi</p>
+                <p>Hỗ trợ thanh toán bằng nhiều hình thức</p>
+            </div>
+        </div>
+        <div class="footerinfo">
+            <div class="container-lg">
+                <div class="row">
+                    <div class="col-4">
+                        <p class="webname">CHERRY BEAUTY</p>
+                        <p style="margin-bottom: 10px;">Thông tin liên hệ:</p>
+                        <a href="#" class="socialmedia"><img src="{% static 'img/img_footer/Facebook.png' %}" /></a>
+                        <a href="#" class="socialmedia"><img src="{% static 'img/img_footer/IG.png' %}" /></a>
+                        <a href="#" class="socialmedia"><img src="{% static 'img/img_footer/Twitter.png' %}" /></a>
+                        <a href="#" class="socialmedia"><img src="{% static 'img/img_footer/Youtube.png' %}" /></a>
+                        <div class="contact">
+                            <div class = "phone">
+                            <div><img src="{% static 'img/img_footer/phone.png' %}" /></div>
+                            <p class="phonelienhe"> <b style =" color: #0D3B5E">Điện thoại:</b> 070.8349.971</p>
+                            </div>
+                            <div class="office">
+                            <div><img src="{% static 'img/img_footer/office.png' %}" /></div>
+                            <p class="addresslienhe"> <b style =" color: #0D3B5E">Văn phòng:</b> Khu phố 6, Linh Trung, <br> Thủ Đức, Hồ Chí Minh </br></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <p class="title" style="font-family: quicksan-bold;color: #0C5879;margin-bottom: 10px;">Chính sách & qui định</p>
+                        <p><a href="#" class="csqd">Qui định thanh toán</a></p>
+                        <p><a href="#" class="csqd">Chính sách huỷ đơn đặt hàng</a></p>
+                        <p><a href="#" class="csqd">Qui chế hoạt động</a></p>
+                        <p><a href="#" class="csqd">Chính sách bảo mật</a></p>
+                    </div>
+                    <div class="col-3">
+                        <p>
+                            <b style="font-family: quicksan-bold;color: #0C5879;margin-bottom: 10px;">GIỜ MỞ CỬA</b>
+                            <br>Từ 9:00 - 21:00 tất cả các ngày trong tuần</br>
+                            <i>(bao gồm cả các ngày lễ, ngày Tết).</i>
+                        </p>
+                    </div>
+                    <div class="col-2">
+                        <img src="{% static 'img/img_footer/footer_nen.png' %}" alt="thanh toan tien loi" width="auto" height="200px"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="{% static 'js/base.js' %}"></script>
+    {% block linkjs %}{% endblock %}
+</body>
+
+
+</html>

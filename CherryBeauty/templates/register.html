@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title%}CherryBeauty{% endblock %}
+{% block linkcss%}
+<link rel="stylesheet" href="{% static "css/register.css" %}" type="text/css">
+<link rel="stylesheet" href="owlcarousel/owl.carousel.min.css">
+<link rel="stylesheet" href="owlcarousel/owl.theme.default.min.css">
+{% endblock %}
+
+{% block banner%}
+{% endblock %}
+
+{% block main%}
+<div class = "pop-up">
+    <div class="title">
+        <h1>Đăng kí</h1>
+    </div>
+    <div class="col-left">
+        <div class="img-content">
+            <a href="/"><img src="{%static "img/img_body/item.png" %}"></a>
+        </div>
+    </div>
+    <div class="col-right">
+    <h2>Tạo tài khoản của bạn</h2>
+    <form method="POST" action="">
+        {% csrf_token %}
+            <div class="fieldset">       
+                    <div class = "formregister">
+                    <div class ="name">
+                    <label for=""><i class="fa-solid fa-user-pen"></i></label>
+                    <p class="fname"> {{form.first_name}} </p>
+                    <p class = "lname"> {{form.last_name}} </p>
+                    </div>
+                    
+                        
+                    <label for=""><i class="fa-solid fa-user" ></i></label>
+                    {{form.username}}
+                    <br>
+
+                    <label for=""><i class="fa-regular fa-envelope" ></i></label>
+                    {{form.email}}
+                    <br>
+
+                    <label for=""><i class="fa-solid fa-key " ></i></label>
+                    {{form.password1}}
+                    <br>
+
+                    <label for=""><i class="fa-solid fa-key " ></i></label> 
+                    {{form.password2}}
+                    <br>
+                    </div>
+
+                    <p class ="error">
+                    
+                    {{ form.errors}}
+                    </p>
+                    
+                <div class="control-button">
+                    <button class="dnbutton" onclick="login()">Đăng nhập</button>
+                    <button type="submit" class="dkbutton">Đăng ký</button>
+                </div>
+            </div>
+        
+    </form>
+    </div>
+</div>
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+        {% endfor %}
+        {% endif %}
+    {% endblock %}
+
+{% block linkjs %}
+<script src="jquery.min.js"></script>
+<script src="owlcarousel/owl.carousel.min.js"></script>
+<script>
+    var form_fields = document.getElementsByTagName('input')
+    form_fields[2].placeholder = 'Họ và tên đệm';
+    form_fields[3].placeholder = 'Tên';
+    form_fields[4].placeholder = 'Tên đăng nhập';
+    form_fields[5].placeholder = 'Email';
+    form_fields[6].placeholder = 'Mật khẩu';
+    form_fields[7].placeholder = 'Nhập lại mật khẩu';
+
+</script>
+{% endblock %}

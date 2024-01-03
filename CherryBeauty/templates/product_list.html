@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title%}CherryBeauty{% endblock %}
+{% block linkcss%}
+<link rel="stylesheet" href="{% static "css/customerinfo.css" %}" type="text/css">
+{% endblock %}
+
+{% block banner%}
+
+{% endblock %}
+
+{% block main%}
+<div class = "container-lg">
+    <div class = "row align-item-star">
+    <div class = "col-3">
+    {% include 'filter.html'%}
+    </div>
+    <div class = "col-9">
+    <div class ="list">
+        <h1> Danh mục sản phẩm </h1>
+        <div class ="item-list">
+        {% for makeup in makeups%}
+        <div class="item">
+        <div class ="sanpham">
+            <div class="sp_img">
+                {% if makeup.product_img %}
+                  <img src="{{ makeup.product_img.url }}"/>
+                {% endif %}
+            </div>
+            <div class="divtitle">
+                <p class="title">{{makeup.title}}</p>
+            </div>
+            <div class="pricediv">
+                <p class="price"><em>{{makeup.price}} VNĐ</em></p>
+            </div>
+            <div class="addcartdiv">
+                <button class="addcart"><i class="fa-solid fa-basket-shopping fa-lg"></i>Thêm vào giỏ hàng</button>
+            </div>
+            <div class="morediv">
+                <button class="more" onclick="window.location='{% url 'item_detail' makeup.slug %}'"> Xem thêm </button>
+            </div>
+        </div>
+        </div>
+        {% endfor %}
+        </div>
+        <div class = "row justify-center">
+            <div class = "pagenum">
+                {% if makeups.has_previous %}
+                <!--<a href = "?page=1"> &laquo First</a>-->
+                 <button class = "pre_button" onclick="window.location='?page={{makeups.previous_page_number}}'"><i class="fa-solid fa-angles-left"></i></button>
+                {% endif %}
+     
+                Page <strong style="color: #266DB6"> {{makeups.number}} </strong> of <strong style="color: #266DB6"> {{makeups.paginator.num_pages}} </strong>
+        
+                {% if makeups.has_next %}
+                    <button class = "next_button" onclick="window.location='?page={{makeups.next_page_number}}'"><i class="fa-solid fa-angles-right"></i></button>
+                <!--<a href = "?page={{posts.paginator.num_pages}}"> &laquo last</a>-->
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+{% endblock %}
+
+{% block linkjs %}
+
+{% endblock %}

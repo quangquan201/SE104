@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title%}CherryBeauty | Sản phẩm{% endblock %}
+{% block linkcss%}
+<link rel="stylesheet" href="{% static "css/product_list.css" %}" type="text/css">
+{% endblock %}
+
+{% block banner%}
+{% endblock %}
+
+{% block main%}
+<div class = "container-lg">
+<div class = "row align-item-star">
+<div class = "col-3">
+<div class ="filter">
+    <h1> Filter </h1>
+    <div class="brandbox">
+        <div class="boxtitle">
+            <h2> Thương hiệu </h2>
+        </div>
+        <div class = "brand">
+            {% for brand in brands%}
+                <li>
+                    <input type="checkbox" class="filter-checkbox" data-filter = "brand" value = "{{brand.brand__title}}"/>&nbsp; {{brand.brand__title}}
+                </li>
+            {% endfor %}
+        </div>
+    </div>
+    <div class ="nationbox">
+        <div class="boxtitle"> 
+        <h2> Xuất xứ </h2>
+        </div>
+        <div class = "nation">
+            {% for nation in nations%}
+                <li>
+                    <input type="checkbox" class="filter-checkbox" data-filter = "nation" value = "{{nation.nation__title}}"/>&nbsp; {{nation.nation__title}}
+                </li>
+            {% endfor %}
+        </div> 
+    </div>
+    <div class ="tagbox">
+        <div class="boxtitle"> 
+        <h2> Phân loại </h2>
+        </div>
+        <div class = "tag">
+            {% for tag in tags%}
+                <li>
+                    <input type="checkbox" class="filter-checkbox" data-filter = "tag" value = "{{tag.tag__title}}"/>&nbsp; {{tag.tag__title}}
+                </li>
+            {% endfor %}
+        </div> 
+    </div>
+</div>
+</div>
+<div class = "col-9">
+<div class ="list">
+    <h1> Danh mục sản phẩm </h1>
+    <div class ="item-list">
+    {% for makeup in makeups%}
+    <div class="item">
+    <div class ="sanpham">
+        <div class="sp_img">
+            {% if makeup.product_img %}
+              <img src="{{ makeup.product_img.url }}"/>
+            {% endif %}
+        </div>
+        <div class="divtitle">
+            <p class="title">{{makeup.title}}</p>
+        </div>
+        <div class="pricediv">
+            <p class="price"><em>{{makeup.price}} VNĐ</em></p>
+        </div>
+        <div class="addcartdiv">
+            <button data-product="{{item.id}}" data-action="add" class="addcart update-cart"><i class="fa-solid fa-basket-shopping fa-lg"></i>Thêm vào giỏ hàng</button>
+        </div>
+        <div class="morediv">
+            <button class="more" onclick="window.location='{% url 'item_detail' makeup.slug %}'"> Xem thêm </button>
+        </div>
+    </div>
+    </div>
+    {% endfor %}
+    </div>
+    <div class = "row justify-center">
+        <div class = "pagenum">
+            {% if makeups.has_previous %}
+            <!--<a href = "?page=1"> &laquo First</a>-->
+             <button class = "pre_button" onclick="window.location='?page={{makeups.previous_page_number}}'"><i class="fa-solid fa-angles-left"></i></button>
+            {% endif %}
+ 
+            Page <strong style="color: #266DB6"> {{makeups.number}} </strong> of <strong style="color: #266DB6"> {{makeups.paginator.num_pages}} </strong>
+    
+            {% if makeups.has_next %}
+                <button class = "next_button" onclick="window.location='?page={{makeups.next_page_number}}'"><i class="fa-solid fa-angles-right"></i></button>
+            <!--<a href = "?page={{posts.paginator.num_pages}}"> &laquo last</a>-->
+            {% endif %}
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}
+
+{% block linkjs %}
+<script src="{%static "js/cart.js" %}"></script>
+<script src="{%static "js/product-filter.js" %}"></script>
+{% endblock %}

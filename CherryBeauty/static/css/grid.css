@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@400;500;600;700&family=Yeseva+One&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+@font-face {
+    font-family: quicksan-light;
+    src: url(../font/Quicksand-Light.ttf);
+}
+@font-face {
+    font-family: quicksan;
+    src: url(../font/Quicksand-Regular.ttf);
+}
+@font-face {
+    font-family: quicksan-bold;
+    src: url(../font/Quicksand-SemiBold.ttf);
+}
+@font-face {
+    font-family: quicksan-medium;
+    src: url(../font/Quicksand-Medium.ttf);
+}
+/* reset css */
+body{
+    font-family: quicksan;
+    font-size: 16px;
+    letter-spacing: 10%;
+    background-color: white;
+    color: black;
+}   
+h1{
+    font-family: 'Yeseva One', cursive;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 125%;
+}
+h4{
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 125%;
+    letter-spacing: 0.1em;
+}
+.container-fluid{
+    width: 100%;
+}
+.container-lg{
+    width: 1311px;
+    margin: 0 auto;
+}
+.container{
+    width: 1000px;
+    margin: 0 auto;
+}
+.container-list{
+    width: 1200px;
+    margin: 0 auto;
+}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.row>[class*="col-"]{
+    padding: 10px;
+}
+/* Flex */
+.justify-between{
+    justify-content: space-between;
+}
+.justify-around{
+    justify-content: space-around;
+}
+.text-primary{
+    color: red;
+}
+.justify-start{
+    justify-content: flex-start;
+}
+.justify-center{
+    justify-content: center;
+}
+.justify-end{
+    justify-content: flex-end;
+}
+.align-item-star{
+    align-items: flex-start;
+}
+.align-item-center{
+    align-items: center;
+}
+.align-item-end{
+    align-items: flex-end;
+}
+.align-self-start{
+    align-self: flex-start;
+}
+.align-self-center{
+    align-self: center;
+}
+.align-self-end{
+    align-self: flex-end;
+}
+.w-100{
+    width: 100%;
+}
+.col-1{
+    width: 8.33%;
+}
+.col-2{
+    width: 16.66%;
+}
+.col-3{
+    width: 25%;
+}
+.col-4{
+    width: 33.33%;
+}
+.col-5{
+    width: 41.66%;
+}
+.col-6{
+    width: 50%;
+}
+.col-7{
+    width: 58.33%;
+}
+.col-8{
+    width: 66.66%;
+}
+.col-9{
+    width: 75%;
+}
+.col-10{
+    width: 83.33%;
+}
+.col-11{
+    width: 91.66%;
+}
+.col-12{
+    width: 100%;
+}
