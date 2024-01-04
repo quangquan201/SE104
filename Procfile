@@ -1,2 +1,2 @@
-web: gunicorn IE221Group13.wsgi
+web: gunicorn SE104.wsgi
 release: python manage.py migrate
