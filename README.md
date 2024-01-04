@@ -1,4 +1,4 @@
-# IE104
+# SE104
 Website ứng dụng Django Framework - Cherry Beauty - bán mỹ phẩm
 
 Link video demo: https://drive.google.com/file/d/1sOZ-CL1otKPrLgZOQCk9YKiDw2Hvpq1J/view?usp=sharing
