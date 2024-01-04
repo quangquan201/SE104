@@ -1,10 +1,8 @@
-# IE221-Nhom-13
+# IE104
 Website ứng dụng Django Framework - Cherry Beauty - bán mỹ phẩm
 
-File word đồ án và word đăng kí đồ án nằm trong folder "word-ppt-demo"
+Link video demo: https://drive.google.com/file/d/1sOZ-CL1otKPrLgZOQCk9YKiDw2Hvpq1J/view?usp=sharing
 
-Link website : https://cherrybeauty11.herokuapp.com/ 
+Link github: https://github.com/quangquan201/SE104
 
-Link video demo: https://drive.google.com/file/d/1YGAi_U_j3m-hE3QL7ZqFGbYXnQTjzLaX/view?usp=sharing
-
-Link ppt: https://docs.google.com/presentation/d/1s8qB84ikZ2MoZbwXmBW03r0njeyKZ2z-/edit?usp=sharing&ouid=108359459433096649584&rtpof=true&sd=true
+Link bao cao: https://docs.google.com/document/d/1v1T0sgSxHynxe5i4IUNrwt_Q9jdbux6D/edit?usp=sharing&ouid=106081208694270546456&rtpof=true&sd=true
